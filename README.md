@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# Xavier Modal Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![npm version](https://badge.fury.io/js/xavier-modal-library.svg)](https://badge.fury.io/js/xavier-modal-library)
 
-## Available Scripts
+Xavier Modal Library is a lightweight and customizable npm package for creating modal dialogs in React applications. With this library, you can easily add modal functionality to your projects, allowing users to display important information, confirm actions, or gather user input in a modal overlay.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Simple and intuitive API for creating modals
+- Customizable modal title, content, and footer
+- Callback functions for handling modal events such as opening, closing, confirming, and canceling
+- Configurable options for closing the modal on overlay click and Escape key press
+- Ability to disable the close button and overlay click functionality
+- Extensible with custom CSS classes for easy styling and customization
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+You can install the Xavier Modal Library via npm. Make sure you have npm installed, then run the following command:
 
-### `npm test`
+```bash
+npm install xavier-modal-library
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+To use the Xavier Modal Library in your React project, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Import the MyModal component from the library:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Example :
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```jsx
+import MyModal from 'xavier-modal-library';
+```
 
-### `npm run eject`
+* Render the MyModal component in your React component, providing the necessary props:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Example :
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```jsx
+import React, { useState } from 'react';
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const App = () => {
+  const [modalOpen, setModalOpen] = useState(false);
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
 
-## Learn More
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  return (
+    <div>
+      <button onClick={handleOpenModal}>Open Modal</button>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+      <MyModal
+        open={modalOpen}
+        title="Sample Modal"
+        text="This is the content of the modal."
+        onClose={handleCloseModal}
+        // Add more props as needed
+      />
+    </div>
+  );
+};
 
-### Code Splitting
+export default App;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* Customize the MyModal component by passing additional props:
 
-### Analyzing the Bundle Size
+Example :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```jsx
+<MyModal
+  open={modalOpen}
+  title="Sample Modal"
+  text="This is the content of the modal."
+  onClose={handleCloseModal}
+  onConfirm={handleConfirmAction}
+  onCancel={handleCancelAction}
+  showCloseButton={true}
+  showFooter={true}
+  footerContent={<p>Additional footer content goes here.</p>}
+  // Add more props as needed
+/>
+```
 
-### Making a Progressive Web App
+For a complete list of available props and their descriptions, refer to the Props section.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Props
 
-### Advanced Configuration
+The `MyModal` component accepts the following props:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `open` (boolean, required): Whether the modal is open or closed.
+- `title` (string): The title or heading of the modal.
+- `text` (string): The main content or body text of the modal.
+- `onClose` (function): Callback function to be called when the modal is closed.
+- `onOpen` (function): Callback function to be called when the modal is opened.
+- `onConfirm` (function): Callback function to be called when a confirmation action is performed within the modal.
+- `onCancel` (function): Callback function to be called when a cancellation action is performed within the modal.
+- `closeOnOverlayClick` (boolean): Specifies whether the modal should close when the overlay (outside the modal) is clicked.
+- `closeOnEscape` (boolean): Specifies whether the modal should close when the Escape key is pressed.
+- `customClass` (string): Custom CSS class name to be added to the modal for additional styling or customization.
+- `showCloseButton` (boolean): Specifies whether to display a close button in the modal header.
+- `showFooter` (boolean): Specifies whether to display a footer section in the modal.
+- `footerContent` (node): Additional content to be displayed in the footer section of the modal.
+- `disableCloseButton` (boolean): Specifies whether to disable the close button in the modal header.
+- `disableOverlayClick` (boolean): Specifies whether to disable closing the modal when clicking outside the modal.

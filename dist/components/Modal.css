@@ -1,0 +1,72 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+  }
+  
+  .modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    max-width: 400px;
+    border-radius: 4px;
+    position: relative;
+    border: 1px solid #007bff; /* Thin border around the modal */
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+  
+  .modal-cross {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .modal-close,
+  .modal-confirm,
+  .modal-cancel {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .modal-confirm,
+  .modal-cancel {
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  .modal-footer {
+    margin-top: 20px;
+    text-align: center; /* Center the buttons horizontally */
+  }
