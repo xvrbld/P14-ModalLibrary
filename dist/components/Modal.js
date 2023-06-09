@@ -17,6 +17,10 @@ const MyModal = ({
   // Callback function to be called when a confirmation action is performed within the modal
   onCancel,
   // Callback function to be called when a cancellation action is performed within the modal
+  confirmText,
+  // Default text for the Confirm button
+  cancelText,
+  // Default text for the Cancel button
   closeOnOverlayClick,
   // Specifies whether the modal should close when the overlay (outside the modal) is clicked
   closeOnEscape,
@@ -69,20 +73,20 @@ const MyModal = ({
         className: "modal-cross",
         onClick: onClose,
         children: "X"
-      }), /*#__PURE__*/_jsx("h1", {
+      }), title && /*#__PURE__*/_jsx("h1", {
         children: title
-      }), /*#__PURE__*/_jsx("p", {
+      }), text && /*#__PURE__*/_jsx("p", {
         children: text
       }), showFooter && /*#__PURE__*/_jsxs("div", {
         className: "modal-footer",
         children: [footerContent, onConfirm && /*#__PURE__*/_jsx("button", {
           className: "modal-confirm",
           onClick: handleConfirm,
-          children: "Confirm"
+          children: confirmText
         }), onCancel && /*#__PURE__*/_jsx("button", {
           className: "modal-cancel",
           onClick: handleCancel,
-          children: "Cancel"
+          children: cancelText
         })]
       })]
     })
