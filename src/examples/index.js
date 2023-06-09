@@ -24,6 +24,8 @@ const App = () => {
         onOpen={() => console.log("Modal opened")} // Callback function to be called when the modal is opened
         onConfirm={() => console.log("Confirmation action")} // Callback function to be called when a confirmation action is performed within the modal
         onCancel={() => console.log("Cancellation action")} // Callback function to be called when a cancellation action is performed within the modal
+        confirmText="Confirm" // Default text for the Confirm button
+        cancelText="Cancel" // Default text for the Cancel button
         closeOnOverlayClick={true} // Specifies whether the modal should close when the overlay (outside the modal) is clicked
         closeOnEscape={true} // Specifies whether the modal should close when the Escape key is pressed
         customClass="custom-modal" // Custom CSS class name to be added to the modal for additional styling or customization
